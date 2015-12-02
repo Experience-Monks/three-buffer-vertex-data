@@ -2,7 +2,7 @@
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-[(demo)](http://jam3.github.io/three-buffer-vertex-data/index.html) - [(source)](./demo/index.js)
+[(demo)](http://jam3.github.io/three-buffer-vertex-data/) - [(source)](./demo/index.js)
 
 Convenience functions for sending vertex data to an attribtue of a [THREE.BufferGeometry](http://threejs.org/docs/#Reference/Core/BufferGeometry).
 
