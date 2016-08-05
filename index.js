@@ -1,3 +1,4 @@
+var THREE = require('three')
 var flatten = require('flatten-vertex-data')
 
 module.exports.attr = setAttribute
