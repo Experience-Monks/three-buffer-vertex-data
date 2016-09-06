@@ -1,4 +1,5 @@
 var flatten = require('flatten-vertex-data')
+var warned = false;
 
 module.exports.attr = setAttribute
 module.exports.index = setIndex
@@ -38,6 +39,17 @@ function updateAttribute (attrib, data, itemSize, dtype) {
   if (!attrib || rebuildAttribute(attrib, data, itemSize)) {
     // create a new array with desired type
     data = flatten(data, dtype)
+    if (attrib && !warned) {
+      warned = true;
+      console.warn([
+        'A WebGL buffer is being updated with a new size or itemSize, ',
+        'however ThreeJS only supports fixed-size buffers.\nThe old buffer may ',
+        'still be kept in memory.\n',
+        'To avoid memory leaks, it is recommended that you dispose ',
+        'your geometries and create new ones, or support the following PR in ThreeJS:\n',
+        'https://github.com/mrdoob/three.js/pull/9631'
+      ].join(''));
+    }
     attrib = new THREE.BufferAttribute(data, itemSize)
     attrib.needsUpdate = true
     return attrib
