@@ -40,7 +40,7 @@ function updateAttribute (attrib, data, itemSize, dtype) {
     // create a new array with desired type
     data = flatten(data, dtype)
     if (attrib && !warned) {
-      warned = true;
+      warned = true
       console.warn([
         'A WebGL buffer is being updated with a new size or itemSize, ',
         'however ThreeJS only supports fixed-size buffers.\nThe old buffer may ',
@@ -48,7 +48,7 @@ function updateAttribute (attrib, data, itemSize, dtype) {
         'To avoid memory leaks, it is recommended that you dispose ',
         'your geometries and create new ones, or support the following PR in ThreeJS:\n',
         'https://github.com/mrdoob/three.js/pull/9631'
-      ].join(''));
+      ].join(''))
     }
     attrib = new THREE.BufferAttribute(data, itemSize)
     attrib.needsUpdate = true
