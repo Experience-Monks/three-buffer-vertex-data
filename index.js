@@ -66,7 +66,8 @@ function updateAttribute (attrib, data, itemSize, dtype) {
     attrib.needsUpdate = true
 
     // New versions of ThreeJS suggest using setArray
-    // to change the data
+    // to change the data. It will use bufferData internally,
+    // so you can change the array size without any issues
     if (typeof attrib.setArray === 'function') {
       attrib.setArray(data)
     }
