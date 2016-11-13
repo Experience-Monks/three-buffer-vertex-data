@@ -52,7 +52,7 @@ function updateAttribute (attrib, data, itemSize, dtype) {
           'however this version of ThreeJS only supports fixed-size buffers.',
           '\nThe old buffer may still be kept in memory.\n',
           'To avoid memory leaks, it is recommended that you dispose ',
-          'your geometries and create new ones, or update to the latest ThreeJS.\n',
+          'your geometries and create new ones, or update to ThreeJS r82 or newer.\n',
           'See here for discussion:\n',
           'https://github.com/mrdoob/three.js/pull/9631'
         ].join(''))

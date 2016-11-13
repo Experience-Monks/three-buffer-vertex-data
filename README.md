@@ -75,6 +75,8 @@ In r73, ThreeJS breaks when using `wireframe` and attempting to dynamically grow
 
 Also, ThreeJS typically expects indices and `positions` to exist. Things may break without these attributes set. 
 
+You will need THREE r82 or newer if you wish to dynamically grow and shrink vertex buffers.
+
 ## License
 
 MIT, see [LICENSE.md](http://github.com/Jam3/three-buffer-vertex-data/blob/master/LICENSE.md) for details.
