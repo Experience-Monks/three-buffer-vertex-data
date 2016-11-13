@@ -39,19 +39,38 @@ function updateAttribute (attrib, data, itemSize, dtype) {
   if (!attrib || rebuildAttribute(attrib, data, itemSize)) {
     // create a new array with desired type
     data = flatten(data, dtype)
-    if (attrib && !warned) {
-      warned = true
-      console.warn([
-        'A WebGL buffer is being updated with a new size or itemSize, ',
-        'however ThreeJS only supports fixed-size buffers.\nThe old buffer may ',
-        'still be kept in memory.\n',
-        'To avoid memory leaks, it is recommended that you dispose ',
-        'your geometries and create new ones, or support the following PR in ThreeJS:\n',
-        'https://github.com/mrdoob/three.js/pull/9631'
-      ].join(''))
+
+    var needsNewBuffer = attrib && typeof attrib.setArray !== 'function'
+    if (!attrib || needsNewBuffer) {
+      // We are on an old version of ThreeJS which can't
+      // support growing / shrinking buffers, so we need
+      // to build a new buffer
+      if (needsNewBuffer && !warned) {
+        warned = true
+        console.warn([
+          'A WebGL buffer is being updated with a new size or itemSize, ',
+          'however this version of ThreeJS only supports fixed-size buffers.',
+          '\nThe old buffer may still be kept in memory.\n',
+          'To avoid memory leaks, it is recommended that you dispose ',
+          'your geometries and create new ones, or update to the latest ThreeJS.\n',
+          'See here for discussion:\n',
+          'https://github.com/mrdoob/three.js/pull/9631'
+        ].join(''))
+      }
+
+      // Build a new attribute
+      attrib = new THREE.BufferAttribute(data, itemSize);
     }
-    attrib = new THREE.BufferAttribute(data, itemSize)
+
+    attrib.itemSize = itemSize
     attrib.needsUpdate = true
+
+    // New versions of ThreeJS suggest using setArray
+    // to change the data
+    if (typeof attrib.setArray === 'function') {
+      attrib.setArray(data)
+    }
+
     return attrib
   } else {
     // copy data into the existing array
