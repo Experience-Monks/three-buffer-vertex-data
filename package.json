@@ -1,6 +1,6 @@
 {
   "name": "three-buffer-vertex-data",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "an easy way to set vertex data on a BufferGeometry",
   "main": "index.js",
   "license": "MIT",
