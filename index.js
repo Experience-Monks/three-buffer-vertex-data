@@ -12,7 +12,7 @@ function setIndex (geometry, data, itemSize, dtype) {
   var attrib = isR69 ? geometry.getAttribute('index') : geometry.index
   var newAttrib = updateAttribute(attrib, data, itemSize, dtype)
   if (newAttrib) {
-    if (isR69) geometry.addAttribute('index', newAttrib)
+    if (isR69) geometry.setAttribute('index', newAttrib)
     else geometry.index = newAttrib
   }
 }
@@ -30,7 +30,7 @@ function setAttribute (geometry, key, data, itemSize, dtype) {
   var attrib = geometry.getAttribute(key)
   var newAttrib = updateAttribute(attrib, data, itemSize, dtype)
   if (newAttrib) {
-    geometry.addAttribute(key, newAttrib)
+    geometry.setAttribute(key, newAttrib)
   }
 }
 
@@ -64,13 +64,6 @@ function updateAttribute (attrib, data, itemSize, dtype) {
 
     attrib.itemSize = itemSize
     attrib.needsUpdate = true
-
-    // New versions of ThreeJS suggest using setArray
-    // to change the data. It will use bufferData internally,
-    // so you can change the array size without any issues
-    if (typeof attrib.setArray === 'function') {
-      attrib.setArray(data)
-    }
 
     return attrib
   } else {
