@@ -10,19 +10,19 @@
     "url": "https://github.com/mattdesl"
   },
   "dependencies": {
-    "flatten-vertex-data": "^1.0.0"
+    "flatten-vertex-data": "^1.0.2"
   },
   "devDependencies": {
     "baboon-image-uri": "^1.0.1",
-    "browserify": "^12.0.1",
-    "budo": "^7.0.0",
-    "img": "^1.0.0",
-    "primitive-quad": "^1.0.1",
-    "primitive-sphere": "^2.0.0",
+    "browserify": "^16.5.1",
+    "budo": "^11.6.3",
+    "img": "^3.0.3",
+    "primitive-quad": "^2.0.0",
+    "primitive-sphere": "^3.0.0",
     "primitive-torus": "^1.0.4",
-    "three": "^0.73.0",
+    "three": "^0.117.1",
     "three-orbit-viewer": "^69.3.1",
-    "uglify-js": "^2.6.1"
+    "uglify-js": "^3.10.0"
   },
   "scripts": {
     "test": "node test.js",
